@@ -1,5 +1,5 @@
 {
-  "name": "react-native-gif",
+  "name": "@lowkey/react-native-gif",
   "version": "0.1.0",
   "description": "Performant component for GIFs",
   "main": "lib/commonjs/index",
