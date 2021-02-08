@@ -51,7 +51,7 @@ export default function App() {
             <GifImage
               source={{
                 uri:
-                  'https://media.tenor.com/images/018b6e94fccafb15e287302f002d1805/tenor.gif',
+                  'https://media.tenor.com/images/4599e80442e2f39f5a030d43f928899b/tenor.gif',
               }}
               style={styles.box}
               resizeMode={'cover'}
