@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import GifImage from 'react-native-gif';
+import GifImage from '@lowkey/react-native-gif';
 
 export default function App() {
   const [shown, setShown] = React.useState(false);
@@ -51,7 +51,7 @@ export default function App() {
             <GifImage
               source={{
                 uri:
-                  'https://media.tenor.com/images/1c39f2d94b02d8c9366de265d0fba8a0/tenor.gif',
+                  'https://media.tenor.com/images/018b6e94fccafb15e287302f002d1805/tenor.gif',
               }}
               style={styles.box}
               resizeMode={'cover'}

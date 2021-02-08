@@ -1,6 +1,7 @@
 # react-native-gif
 
 Performant component for GIFs (significant performance increase and better memory usage on iOS). 
+Caching is a available for iOS.
 
 ## Installation
 
