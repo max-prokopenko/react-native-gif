@@ -1,7 +1,7 @@
 {
   "name": "@lowkey/react-native-gif",
-  "version": "0.1.0",
-  "description": "Performant component for GIFs",
+  "version": "0.1.1",
+  "description": "Performant react-native component for GIF",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/src/index.d.ts",
@@ -34,7 +34,13 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "gif",
+    "gifs",
+    "react-native gif",
+    "react-native gifs",
+    "react native gif",
+    "react native gifs"
   ],
   "repository": "https://github.com/max-prokopenko/react-native-gif",
   "author": "Max Prokopenko <max.prokopenko@hotmail.com> (https://github.com/max-prokopenko)",
