@@ -18,4 +18,5 @@ Pod::Spec.new do |s|
   
 
   s.dependency "React-Core"
+  s.dependency 'FLAnimatedImage', '~> 1.0'
 end

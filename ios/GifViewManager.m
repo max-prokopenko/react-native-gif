@@ -1,34 +1,39 @@
 #import <React/RCTViewManager.h>
+#import <Foundation/Foundation.h>
+#import "GifView.h"
 
 @interface GifViewManager : RCTViewManager
 @end
 
-@implementation GifViewManager
+@implementation GifViewManager {
 
-RCT_EXPORT_MODULE(GifView)
+ GifView *_gifImage;
+
+}
+
+RCT_EXPORT_MODULE(GifImage)
 
 - (UIView *)view
 {
-  return [[UIView alloc] init];
+
+  UIView *view = [[UIView alloc] init];
+  _gifImage = [[GifView alloc] init];
+  [view addSubview:_gifImage];
+  return _gifImage;  
+}
+RCT_EXPORT_VIEW_PROPERTY(source, NSString);
+RCT_EXPORT_VIEW_PROPERTY(resizeMode, NSString);
+
++ (BOOL)requiresMainQueueSetup
+{
+  return NO;
 }
 
-RCT_CUSTOM_VIEW_PROPERTY(color, NSString, UIView)
+- (dispatch_queue_t)methodQueue
 {
-  [view setBackgroundColor:[self hexStringToColor:json]];
-}
-
-- hexStringToColor:(NSString *)stringToConvert
-{
-  NSString *noHashString = [stringToConvert stringByReplacingOccurrencesOfString:@"#" withString:@""];
-  NSScanner *stringScanner = [NSScanner scannerWithString:noHashString];
-
-  unsigned hex;
-  if (![stringScanner scanHexInt:&hex]) return nil;
-  int r = (hex >> 16) & 0xFF;
-  int g = (hex >> 8) & 0xFF;
-  int b = (hex) & 0xFF;
-
-  return [UIColor colorWithRed:r / 255.0f green:g / 255.0f blue:b / 255.0f alpha:1.0f];
+  return dispatch_get_main_queue();
 }
 
 @end
+
+// https://media.tenor.com/images/694537a63a62edc1fa7d8c7ed9dfb5de/tenor.gif
