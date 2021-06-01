@@ -68,7 +68,16 @@ The image source (either a remote URL or a local file resource).
 | ---------------- |:----------------:|
 | ImageSourcePropType      | true     |
 
+### `paused`
+Determines if GIF should be paused
+
+ | Type  | Required | Default |
+ | ---------------- |:----------------:|:----------------:|
+ | boolean      | false     |false     |
+
 ## Feature Requests
+
+Additional image props and methods can be exposed if needed. Please make required feature requests in Github issues.
 
 Additional image props and methods can be exposed if needed. Please make required feature requests in Github issues.
 
