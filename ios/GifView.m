@@ -15,7 +15,7 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
   if ((self = [super initWithFrame:frame])) {
-    _imageView = [[FLAnimatedImageView alloc] init];        
+    _imageView = [[FLAnimatedImageView alloc] init];            
   }
   return self;
 }
@@ -45,13 +45,15 @@
     NSURL *url = [NSURL URLWithString:_source];
     [self loadAnimatedImageWithURL:url completion:^(FLAnimatedImage *animatedImage) {
       _image = animatedImage;
-      
       if([_resizeMode isEqualToString:@"contain"]) {
         _imageView.contentMode = UIViewContentModeScaleAspectFit;
       } else if ([_resizeMode isEqualToString:@"cover"]) {
         _imageView.contentMode = UIViewContentModeScaleAspectFill;
       }
-      _imageView.animatedImage = _image;  
+      _imageView.animatedImage = _image;
+      if(_paused) {
+        [_imageView stopAnimating];
+      }
     }];    
   });
 }
@@ -60,11 +62,9 @@
 {
     NSArray *const pathComponents = url.pathComponents;
     NSString *filename = [pathComponents componentsJoinedByString:@"_"];
-    RCTLogInfo(@"Filename is %@", filename);
-    NSString *const diskPath = [NSHomeDirectory() stringByAppendingPathComponent:filename];
+    NSString *const diskPath = [NSTemporaryDirectory() stringByAppendingPathComponent:filename];
     NSData * __block animatedImageData = [[NSFileManager defaultManager] contentsAtPath:diskPath];
     FLAnimatedImage * __block animatedImage = [[FLAnimatedImage alloc] initWithAnimatedGIFData:animatedImageData];
-    
     if (animatedImage) {
         if (completion) {
             completion(animatedImage);
@@ -82,6 +82,17 @@
                 [data writeToFile:diskPath atomically:YES];
             }
         }] resume];
+    }
+}
+
+- (void) setPaused:(BOOL *)paused {
+    _paused = paused;
+    BOOL isAnimating = _imageView.animating;
+    if(paused) {
+            [_imageView stopAnimating];
+        
+    } else {
+            [_imageView startAnimating];
     }
 }
 

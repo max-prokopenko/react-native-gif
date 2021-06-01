@@ -23,6 +23,7 @@ RCT_EXPORT_MODULE(GifImage)
 }
 RCT_EXPORT_VIEW_PROPERTY(source, NSString);
 RCT_EXPORT_VIEW_PROPERTY(resizeMode, NSString);
+RCT_EXPORT_VIEW_PROPERTY(paused, BOOL);
 
 + (BOOL)requiresMainQueueSetup
 {

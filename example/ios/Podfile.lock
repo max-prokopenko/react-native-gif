@@ -237,7 +237,7 @@ PODS:
     - React-cxxreact (= 0.63.4)
     - React-jsi (= 0.63.4)
   - React-jsinspector (0.63.4)
-  - react-native-gif (0.1.1):
+  - react-native-gif (2.1.1):
     - FLAnimatedImage (~> 1.0)
     - React-Core
   - React-RCTActionSheet (0.63.4):
@@ -454,7 +454,7 @@ SPEC CHECKSUMS:
   React-jsi: a0418934cf48f25b485631deb27c64dc40fb4c31
   React-jsiexecutor: 93bd528844ad21dc07aab1c67cb10abae6df6949
   React-jsinspector: 58aef7155bc9a9683f5b60b35eccea8722a4f53a
-  react-native-gif: 763e81e85de334c1f390240332e5acaec6f3a2ed
+  react-native-gif: fba27478808b60e02e5812e059e140970aa38c9a
   React-RCTActionSheet: 89a0ca9f4a06c1f93c26067af074ccdce0f40336
   React-RCTAnimation: 1bde3ecc0c104c55df246eda516e0deb03c4e49b
   React-RCTBlob: a97d378b527740cc667e03ebfa183a75231ab0f0
@@ -470,4 +470,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: d68936e65ee37f570b4eece989879d590dd060c5
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.1
