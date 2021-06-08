@@ -12,11 +12,19 @@ export default function App() {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={togglePaused}>
+        {/* Remote GIF */}
         <GifImage
           source={{
             uri:
-              'https://media1.tenor.com/images/14087c002dfbc931bc965fa042f0b305/tenor.gif?itemid=21707450',
+              'https://media1.tenor.com/images/9b38bcdea412e68fb780d88bdaa5a5c2/tenor.gif?itemid=10670068',
           }}
+          style={styles.box}
+          resizeMode={'cover'}
+          paused={isPaused}
+        />
+        {/* Local GIF */}
+        <GifImage
+          source={require('./smile.gif')}
           style={styles.box}
           resizeMode={'cover'}
           paused={isPaused}

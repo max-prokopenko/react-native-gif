@@ -22,10 +22,11 @@ const GifImage = (props: {
   paused?: boolean;
 }) => {
   const { style, source, resizeMode, paused = false } = props;
+  const relovedSource = Image.resolveAssetSource(source);
   return Platform.OS === 'ios' ? (
     <GifViewManager
       style={style}
-      source={source.uri}
+      source={relovedSource.uri}
       resizeMode={resizeMode}
       paused={paused}
     />
