@@ -24,6 +24,7 @@ RCT_EXPORT_MODULE(GifImage)
 RCT_EXPORT_VIEW_PROPERTY(source, NSString);
 RCT_EXPORT_VIEW_PROPERTY(resizeMode, NSString);
 RCT_EXPORT_VIEW_PROPERTY(paused, BOOL);
+RCT_EXPORT_VIEW_PROPERTY(onLoadEnd, RCTDirectEventBlock);
 
 + (BOOL)requiresMainQueueSetup
 {
@@ -37,4 +38,3 @@ RCT_EXPORT_VIEW_PROPERTY(paused, BOOL);
 
 @end
 
-// https://media.tenor.com/images/694537a63a62edc1fa7d8c7ed9dfb5de/tenor.gif

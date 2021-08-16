@@ -21,6 +21,7 @@ export default function App() {
           style={styles.box}
           resizeMode={'cover'}
           paused={isPaused}
+          onLoadEnd={() => console.log('onLoadEnd')}
         />
         {/* Local GIF */}
         <GifImage
