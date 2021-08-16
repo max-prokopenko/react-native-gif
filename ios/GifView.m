@@ -40,25 +40,26 @@
   }
 }
 
--(void)reloadImage {
-    
+-(void)reloadImage {   
   dispatch_async(dispatch_get_main_queue(), ^{
-    NSURL *url = [NSURL URLWithString:_source];
-    [self loadAnimatedImageWithURL:url completion:^(FLAnimatedImage *animatedImage) {
-      _image = animatedImage;
-      if([_resizeMode isEqualToString:@"contain"]) {
-        _imageView.contentMode = UIViewContentModeScaleAspectFit;
-      } else if ([_resizeMode isEqualToString:@"cover"]) {
-          _imageView.contentMode = UIViewContentModeScaleAspectFill;
-      }
-      _imageView.animatedImage = _image;
-        if (_onLoadEnd) {
-            _onLoadEnd(@{});
-         }
-      if(_paused) {
-        [_imageView stopAnimating];
-      }
-    }];
+        NSURL *url = [NSURL URLWithString:self->_source];
+        [self loadAnimatedImageWithURL:url completion:^(FLAnimatedImage *animatedImage) {
+            self->_image = animatedImage;
+            NSInteger cMode = UIViewContentModeScaleAspectFit;
+            if([self->_resizeMode isEqualToString:@"contain"]) {
+                cMode = UIViewContentModeScaleAspectFit;
+            } else if ([self->_resizeMode isEqualToString:@"cover"]) {
+                cMode = UIViewContentModeScaleAspectFill;
+            }
+            self->_imageView.contentMode = cMode;
+            self->_imageView.animatedImage = self->_image;
+            if(self->_paused) {
+              [self->_imageView stopAnimating];
+            }
+            if (self->_onLoadEnd) {
+              self->_onLoadEnd(@{});
+            }
+        }];
   });
 }
 
@@ -91,7 +92,6 @@
 
 - (void) setPaused:(BOOL *)paused {
     _paused = paused;
-    BOOL isAnimating = _imageView.animating;
     if(paused) {
             [_imageView stopAnimating];
         
