@@ -15,7 +15,7 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
   if ((self = [super initWithFrame:frame])) {
-    _imageView = [[FLAnimatedImageView alloc] init];            
+    _imageView = [[FLAnimatedImageView alloc] init];
   }
   return self;
 }
@@ -41,20 +41,24 @@
 }
 
 -(void)reloadImage {
-  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    
+  dispatch_async(dispatch_get_main_queue(), ^{
     NSURL *url = [NSURL URLWithString:_source];
     [self loadAnimatedImageWithURL:url completion:^(FLAnimatedImage *animatedImage) {
       _image = animatedImage;
       if([_resizeMode isEqualToString:@"contain"]) {
         _imageView.contentMode = UIViewContentModeScaleAspectFit;
       } else if ([_resizeMode isEqualToString:@"cover"]) {
-        _imageView.contentMode = UIViewContentModeScaleAspectFill;
+          _imageView.contentMode = UIViewContentModeScaleAspectFill;
       }
       _imageView.animatedImage = _image;
+        if (_onLoadEnd) {
+            _onLoadEnd(@{});
+         }
       if(_paused) {
         [_imageView stopAnimating];
       }
-    }];    
+    }];
   });
 }
 
