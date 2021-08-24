@@ -1,26 +1,48 @@
 import * as React from 'react';
 
-import { Dimensions, StyleSheet, TouchableOpacity, View } from 'react-native';
+import {
+  Dimensions,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import GifImage from '@lowkey/react-native-gif';
 
 export default function App() {
-  const [isPaused, setIsPaused] = React.useState(false);
+  const [hide, setHide] = React.useState(true);
 
-  const togglePaused = React.useCallback(() => {
-    setIsPaused(!isPaused);
-  }, [isPaused]);
+  const [gifs, setGifs] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch('https://g.tenor.com/v1/trending')
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json.results);
+        setGifs(json.results);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={togglePaused}>
-        <GifImage
-          source={{
-            uri:
-              'https://media1.tenor.com/images/14087c002dfbc931bc965fa042f0b305/tenor.gif?itemid=21707450',
-          }}
-          style={styles.box}
-          resizeMode={'cover'}
-          paused={isPaused}
-        />
+      {!hide &&
+        gifs.slice(0, 12).map(
+          (g: { media: { nanogif: { url: string } }[] }): JSX.Element => (
+            <GifImage
+              source={{
+                uri: g.media[0].nanogif.url,
+              }}
+              style={styles.box}
+              resizeMode={'cover'}
+              paused={false}
+            />
+          )
+        )}
+      <TouchableOpacity onPress={() => setHide(!hide)}>
+        <Text>Show or Hide</Text>
       </TouchableOpacity>
     </View>
   );
@@ -31,10 +53,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
+    flexDirection: 'row',
+    width: Dimensions.get('window').width,
+    flexWrap: 'wrap',
+    padding: 20,
+    marginTop: 30,
   },
   box: {
-    width: Dimensions.get('window').width * 0.8,
-    height: Dimensions.get('window').width * 0.9,
+    width: Dimensions.get('window').width * 0.2,
+    height: Dimensions.get('window').width * 0.2,
     marginVertical: 20,
     backgroundColor: 'rgba(0,255,0,1)',
     margin: 15,
