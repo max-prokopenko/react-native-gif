@@ -9,5 +9,4 @@ target 'GifExample' do
   use_react_native!(:path => config["reactNativePath"])
 
   pod 'react-native-gif', :path => '../..'
-  
 end

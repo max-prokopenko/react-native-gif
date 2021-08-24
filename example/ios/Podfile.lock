@@ -288,7 +288,6 @@ SPEC REPOS:
   trunk:
     - boost-for-react-native
     - SDWebImage
-
 EXTERNAL SOURCES:
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
