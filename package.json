@@ -1,6 +1,6 @@
 {
   "name": "@lowkey/react-native-gif",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Performant react-native component for GIF",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
