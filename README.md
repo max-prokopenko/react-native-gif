@@ -3,6 +3,11 @@
 Performant component for GIFs (significant performance increase and better memory usage on iOS). 
 Caching is a available for iOS.
 
+## v3.x.x
+
+Updating from v2.x.x to v3.x.x might have some breaking changes due to migration from `FLAnimatedImage` to `SDWebImage`. Please create a issue or pull request if you notice any bugs.
+
+
 ## Installation
 
 ```sh
