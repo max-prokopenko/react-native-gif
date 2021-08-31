@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import {
   Dimensions,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -11,6 +12,7 @@ import GifImage from '@lowkey/react-native-gif';
 
 export default function App() {
   const [hide, setHide] = React.useState(true);
+  const [paused, setPaused] = React.useState(false);
 
   const [gifs, setGifs] = React.useState([]);
 
@@ -27,37 +29,61 @@ export default function App() {
   }, []);
 
   return (
-    <View style={styles.container}>
-      {!hide &&
-        gifs.slice(0, 12).map(
-          (g: { media: { nanogif: { url: string } }[] }): JSX.Element => (
-            <GifImage
-              source={{
-                uri: g.media[0].nanogif.url,
-              }}
-              style={styles.box}
-              resizeMode={'cover'}
-              paused={false}
-            />
-          )
-        )}
-      <TouchableOpacity onPress={() => setHide(!hide)}>
+    <View style={styles.mainContainer}>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={styles.containerContent}
+      >
+        {!hide &&
+          gifs.slice(0, 12).map(
+            (
+              g: { media: { nanogif: { url: string } }[] },
+              index: number
+            ): JSX.Element => (
+              <GifImage
+                source={{
+                  uri: g.media[0].nanogif.url,
+                }}
+                style={styles.box}
+                resizeMode={'cover'}
+                paused={paused}
+                onLoadEnd={() => console.log('onLoadEnd', index)}
+              />
+            )
+          )}
+      </ScrollView>
+      <TouchableOpacity onPress={() => setHide(!hide)} style={styles.button}>
         <Text>Show or Hide</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => setPaused(!paused)}
+        style={styles.button}
+      >
+        <Text>Pause</Text>
       </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  mainContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    flex: 1,
-    flexDirection: 'row',
-    width: Dimensions.get('window').width,
+    flexDirection: 'column',
     flexWrap: 'wrap',
-    padding: 20,
-    marginTop: 30,
+    backgroundColor: 'green',
+  },
+  container: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height * 0.8,
+    backgroundColor: 'red',
+  },
+  containerContent: {
+    paddingTop: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
   },
   box: {
     width: Dimensions.get('window').width * 0.2,
@@ -67,5 +93,10 @@ const styles = StyleSheet.create({
     margin: 15,
     borderRadius: 30,
     overflow: 'hidden',
+  },
+  button: {
+    backgroundColor: 'pink',
+    padding: 20,
+    marginTop: 5,
   },
 });

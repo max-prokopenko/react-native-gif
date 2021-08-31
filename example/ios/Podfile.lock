@@ -185,7 +185,7 @@ PODS:
     - React-cxxreact (= 0.63.4)
     - React-jsi (= 0.63.4)
   - React-jsinspector (0.63.4)
-  - react-native-gif (2.2.0):
+  - react-native-gif (3.0.1):
     - React-Core
     - SDWebImage (~> 5.0)
   - React-RCTActionSheet (0.63.4):
@@ -288,6 +288,7 @@ SPEC REPOS:
   trunk:
     - boost-for-react-native
     - SDWebImage
+
 EXTERNAL SOURCES:
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
@@ -361,7 +362,7 @@ SPEC CHECKSUMS:
   React-jsi: a0418934cf48f25b485631deb27c64dc40fb4c31
   React-jsiexecutor: 93bd528844ad21dc07aab1c67cb10abae6df6949
   React-jsinspector: 58aef7155bc9a9683f5b60b35eccea8722a4f53a
-  react-native-gif: b448d2f81b8a7cade66e3c9604a729991fa27e29
+  react-native-gif: b1cbf04aaf394db2eb7006f88a9c8a073763ecf9
   React-RCTActionSheet: 89a0ca9f4a06c1f93c26067af074ccdce0f40336
   React-RCTAnimation: 1bde3ecc0c104c55df246eda516e0deb03c4e49b
   React-RCTBlob: a97d378b527740cc667e03ebfa183a75231ab0f0
@@ -375,6 +376,6 @@ SPEC CHECKSUMS:
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
 
-PODFILE CHECKSUM: 6a9514c2a5de783bbb7e1934e78896474d33baba
+PODFILE CHECKSUM: e58dd2b236f6a27928eb3cae150a9ae1be1e7a6c
 
 COCOAPODS: 1.10.1
