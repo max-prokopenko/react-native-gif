@@ -11,7 +11,7 @@
   if ((self = [super initWithFrame:frame])) {
       _imageView = [SDAnimatedImageView new];
               
-//      _imageView.sd_imageTransition = SDWebImageTransition.fadeTransition;
+      _imageView.sd_imageTransition = SDWebImageTransition.fadeTransition;
       _imageView.shouldIncrementalLoad = NO;
   }
   return self;
