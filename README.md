@@ -80,6 +80,21 @@ Determines if GIF should be paused
  | ---------------- |:----------------:|:----------------:|
  | boolean      | false     |false     |
 
+### `quality`
+Determines quality (pixel size) of the GIF. Value between 0 - 1, where 1 is the best quality.
+
+ | Type  | Required | Default |
+ | ---------------- |:----------------:|:----------------:|
+ | number      | false     |1     |
+
+ ### `useCPU`
+Defaults to false. Which automatically adjust decoding between memory and CPU, by calculating current memory usage.
+If set to true, means without any buffer cache each of frames will be decoded and then be freed after rendering. Lowest memory usage, highest CPU usage.
+
+ | Type  | Required | Default |
+ | ---------------- |:----------------:|:----------------:|
+ | boolean      | false     |false     |
+
 ## Feature Requests
 
 Additional image props and methods can be exposed if needed. Please make required feature requests in Github issues.
