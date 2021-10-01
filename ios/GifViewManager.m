@@ -25,6 +25,8 @@ RCT_EXPORT_VIEW_PROPERTY(source, NSString);
 RCT_EXPORT_VIEW_PROPERTY(resizeMode, NSString);
 RCT_EXPORT_VIEW_PROPERTY(paused, BOOL);
 RCT_EXPORT_VIEW_PROPERTY(onLoadEnd, RCTDirectEventBlock);
+RCT_EXPORT_VIEW_PROPERTY(useCPU, BOOL);
+RCT_EXPORT_VIEW_PROPERTY(quality, double);
 
 + (BOOL)requiresMainQueueSetup
 {

@@ -8,6 +8,9 @@
 
 @property (nonatomic, assign) BOOL *paused;
 
+@property (nonatomic, assign) BOOL useCPU;
+@property (nonatomic, assign) double quality;
+
 @property (nonatomic, copy) RCTDirectEventBlock onLoadEnd;
 
 @end

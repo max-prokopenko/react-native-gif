@@ -23,13 +23,15 @@
     _imageView.frame = self.bounds;
     
     [self addSubview:_imageView];
+    [self reloadImage];
 }
 - (void) reloadImage {
     
-    if(_source && _onLoadEnd) {
+    if(_source && _onLoadEnd && self.frame.size.width > 0 && _quality) {
         NSURL *url = [NSURL URLWithString:_source];
         
-        CGSize thumbnailSize = CGSizeMake(self.frame.size.width, self.frame.size.height);
+        CGFloat scale = UIScreen.mainScreen.scale;
+        CGSize thumbnailSize = CGSizeMake(self.frame.size.width * scale * _quality, self.frame.size.height * scale * _quality);
         
         [_imageView sd_setImageWithURL:url placeholderImage:nil options:SDWebImageProgressiveLoad context:@{SDWebImageContextImageThumbnailPixelSize : @(thumbnailSize)} progress:nil completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
             
@@ -76,6 +78,22 @@
         _onLoadEnd = [onLoadEnd copy];
         [self reloadImage];
     }
+}
+
+- (void)setUseCPU:(BOOL)useCPU
+{
+    if (_useCPU != useCPU) {
+        _useCPU = useCPU;
+        if (useCPU) {
+            _imageView.maxBufferSize = 1;
+        }
+    }
+}
+
+- (void)setQuality:(double)quality
+{
+    _quality = quality;
+    [self reloadImage];
 }
 
 @end

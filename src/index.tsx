@@ -12,6 +12,8 @@ type GifProps = {
   resizeMode: ImageResizeMode;
   paused: boolean;
   onLoadEnd?: () => void;
+  useCPU?: boolean;
+  quality?: number;
 };
 
 export const GifViewManager = requireNativeComponent<GifProps>('GifImage');
@@ -22,8 +24,18 @@ const GifImage = (props: {
   resizeMode: ImageResizeMode;
   paused?: boolean;
   onLoadEnd?: () => void;
+  useCPU?: boolean;
+  quality?: number;
 }) => {
-  const { style, source, resizeMode, paused = false, onLoadEnd } = props;
+  const {
+    style,
+    source,
+    resizeMode,
+    paused = false,
+    onLoadEnd,
+    useCPU = false,
+    quality = 1,
+  } = props;
   const relovedSource = Image.resolveAssetSource(source);
   return Platform.OS === 'ios' ? (
     <GifViewManager
@@ -32,6 +44,8 @@ const GifImage = (props: {
       resizeMode={resizeMode}
       paused={paused}
       onLoadEnd={onLoadEnd}
+      useCPU={useCPU}
+      quality={quality}
     />
   ) : (
     <Image {...props} />
