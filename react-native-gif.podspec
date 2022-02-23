@@ -18,5 +18,5 @@ Pod::Spec.new do |s|
   
 
   s.dependency "React-Core"  
-  s.dependency 'SDWebImage', '~> 5.0'
+  s.dependency 'SDWebImage', '~> 5.12.3'
 end
